@@ -98,4 +98,22 @@ public final class ResourceLoader {
     public static void addURL(final URL url) {
         ResourceLoader.CLASS_LOADER.get().addURL(url);
     }
+
+    /**
+     * 
+     * @return Class loader that library uses for current thread
+     */
+    public static ClassLoader getClassLoader() {
+        return ResourceLoader.CLASS_LOADER.get();
+    }
+
+    /**
+     * 
+     * @param name Class name
+     * @throws ClassNotFoundException 
+     */
+    public static void classForName(final String name) throws ClassNotFoundException {
+        Class.forName(name, true, ResourceLoader.CLASS_LOADER.get());
+    }
+
 }
