@@ -1,15 +1,21 @@
 package org.kaikikm.threadresloader.test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
+import org.kaikikm.dummy.TestClass;
 import org.kaikikm.threadresloader.ResourceLoader;
 
 import com.google.common.io.Files;
@@ -26,7 +32,6 @@ public class TestThreadResLoader {
     @Test
     public void testClasspathResourceLoading() {
         assertNotNull(ResourceLoader.getResource("test.txt"));
-        //assertNotNull(ThreadResLoader.getResource("/test.txt"));
         assertNotNull(ResourceLoader.getResource("testfolder"));
         assertNotNull(ResourceLoader.getResource("testfolder/test1.txt"));
     }
@@ -77,6 +82,53 @@ public class TestThreadResLoader {
         assertNull(t.getResource());
         assertNotNull(ResourceLoader.getResource(CREATED_FILE));
         FileUtils.deleteDirectory(dir);
+    }
+
+    /**
+     * @throws IllegalAccessException 
+     * @throws InstantiationException 
+     * @throws ClassNotFoundException 
+     * @throws SecurityException 
+     * @throws NoSuchMethodException 
+     * @throws InvocationTargetException 
+     * @throws IllegalArgumentException 
+     * @throws MalformedURLException 
+     * 
+     */
+    @Test
+    public void testClassLoading() throws InstantiationException, IllegalAccessException, ClassNotFoundException, NoSuchMethodException, SecurityException, IllegalArgumentException, InvocationTargetException, MalformedURLException {
+        try {
+            ResourceLoader.classForName("TestClass");
+            fail();
+        } catch (ClassNotFoundException e) {
+            assertNotNull(e.getMessage());
+        }
+        /*
+         * add new folder to classpath and check JAR existence
+         */
+        final File root = new File(System.getProperty("user.dir"));
+        final File jarLocation = new File(root, "externTestResources");
+        ResourceLoader.addURL(jarLocation.toURI().toURL());
+        assertNotNull("Exists dummy jar file on: " + jarLocation.getPath(), ResourceLoader.getResource("DummyTestClasses.jar"));
+        /*
+         * Add JAR
+         */
+        ResourceLoader.addURL(new File(jarLocation, "DummyTestClasses.jar").toURI().toURL());
+        /*
+         * test new class
+         */
+        Class<?> c = ResourceLoader.classForName("org.kaikikm.dummy.TestClass2");
+        Object o =  c.newInstance();
+        Method method = c.getDeclaredMethod("dummyMethod2");
+        assertEquals(2, method.invoke(o));
+        /*
+         * test old class (must override old class)
+         */
+        assertEquals(1, new TestClass().dummyMethod1());
+        c = ResourceLoader.classForName("org.kaikikm.dummy.TestClass");
+        o = c.newInstance();
+        method = c.getDeclaredMethod("dummyMethod3");
+        assertEquals(3, method.invoke(o));
     }
 
     private static class TestThread extends Thread {
