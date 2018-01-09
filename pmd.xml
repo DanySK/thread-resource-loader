@@ -17,7 +17,7 @@
 	<rule ref="rulesets/java/finalizers.xml/AvoidCallingFinalize" />
 	<rule ref="rulesets/java/strictexception.xml/AvoidCatchingNPE" />
 	<rule ref="rulesets/java/strictexception.xml/AvoidCatchingThrowable" />
-	<rule ref="rulesets/java/design.xml/AvoidConstantsInterface" />
+	<rule ref="rulesets/java/design.xml/ConstantsInInterface" />
 	<rule ref="rulesets/java/basic.xml/AvoidDecimalLiteralsInBigDecimalConstructor" />
 	<rule ref="rulesets/java/naming.xml/AvoidDollarSigns" />
 	<rule ref="rulesets/java/strings.xml/AvoidDuplicateLiterals" />
