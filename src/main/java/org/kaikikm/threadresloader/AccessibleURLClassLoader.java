@@ -28,4 +28,21 @@ class AccessibleURLClassLoader extends URLClassLoader {
         super.addURL(url);
     }
 
+    @Override
+    protected synchronized Class<?> loadClass(final String name, final boolean resolve)
+            throws ClassNotFoundException {
+        Class<?> c = findLoadedClass(name);
+        if (c == null) {
+                try {
+                    c = findClass(name);
+                } catch (ClassNotFoundException e) {
+                    c = super.loadClass(name, resolve);
+                }
+        }
+        if (resolve) {
+            resolveClass(c);
+        }
+        return c;
+    }
+
 }
