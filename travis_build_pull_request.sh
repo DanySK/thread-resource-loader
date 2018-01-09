@@ -1,3 +1,3 @@
 #!/bin/bash
 set -e
-./gradlew install
+./gradlew build
