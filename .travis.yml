@@ -45,6 +45,7 @@ jobs:
       script:
         - ./gradlew 
         - sudo mkdir -p /c/workspace
+        - sudo chown $USER /c/workspace
         - cp -R "$TRAVIS_BUILD_DIR"/* /c/workspace/
       workspaces:
         create:
