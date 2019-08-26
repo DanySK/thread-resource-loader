@@ -44,6 +44,9 @@ jobs:
         - *reference_jdk
       script:
         - ./gradlew 
+      workspaces:
+        create:
+          name: linux-reference-build
     - stage: deploy
       name: "Reports and deployment"
       if: repo = env(OFFICIAL_REPO_SLUG) AND type != pull_request
