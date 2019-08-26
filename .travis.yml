@@ -44,9 +44,13 @@ jobs:
         - *reference_jdk
       script:
         - ./gradlew 
+        - mkdir -p /c/workspace
+        - cp -R "$TRAVIS_BUILD_DIR"/* /c/workspace/
       workspaces:
         create:
           name: linux-reference-build
+          paths:
+            - /c/workspace/
     - stage: deploy
       name: "Reports and deployment"
       if: repo = env(OFFICIAL_REPO_SLUG) AND type != pull_request
@@ -60,6 +64,9 @@ jobs:
       script: true
       after_success:
         - ./gradlew uploadArchives
+workspaces:
+  use:
+    - linux-reference-build
 before_install:
   - curl "${GRAVIS}.disable-windows-defender.sh" --output .disable-windows-defender.sh
   - source .disable-windows-defender.sh
