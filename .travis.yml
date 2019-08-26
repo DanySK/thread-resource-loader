@@ -44,7 +44,7 @@ jobs:
         - *reference_jdk
       script:
         - ./gradlew 
-        - mkdir -p /c/workspace
+        - sudo mkdir -p /c/workspace
         - cp -R "$TRAVIS_BUILD_DIR"/* /c/workspace/
       workspaces:
         create:
