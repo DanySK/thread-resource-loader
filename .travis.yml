@@ -51,6 +51,7 @@ jobs:
         create:
           name: reference-build
           paths:
+            - $TRAVIS_BUILD_DIR
             - /c/Users/$USER/build/$TRAVIS_REPO_SLUG
             - /Users/$USER/build/$TRAVIS_REPO_SLUG
     - stage: deploy
