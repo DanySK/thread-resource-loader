@@ -49,10 +49,10 @@ jobs:
         - bash .prepare-multiplatform-workspace.sh
       workspaces:
         create:
-          name: linux-reference-build
+          name: reference-build
           paths:
-            - /c/Users/$USER
-            - /Users/$USER
+            - /c/Users/$USER/build/$TRAVIS_REPO_SLUG
+            - /Users/$USER/build/$TRAVIS_REPO_SLUG
     - stage: deploy
       name: "Reports and deployment"
       if: repo = env(OFFICIAL_REPO_SLUG) AND type != pull_request
@@ -68,7 +68,7 @@ jobs:
         - ./gradlew uploadArchives
 workspaces:
   use:
-    - linux-reference-build
+    - reference-build
 before_install:
   - curl "${GRAVIS}.disable-windows-defender.sh" --output .disable-windows-defender.sh
   - source .disable-windows-defender.sh
