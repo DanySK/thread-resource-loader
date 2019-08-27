@@ -44,14 +44,15 @@ jobs:
         - *reference_jdk
       script:
         - ./gradlew 
-        - sudo mkdir -p /c/workspace
-        - sudo chown $USER /c/workspace
-        - cp -R "$TRAVIS_BUILD_DIR"/* /c/workspace/
+        # Workspace preparation
+        - curl "${GRAVIS}.prepare-multiplatform-workspace.sh" --output .prepare-multiplatform-workspace.sh
+        - bash .prepare-multiplatform-workspace.sh
       workspaces:
         create:
           name: linux-reference-build
           paths:
-            - /c/workspace/
+            - /c/Users/$USER
+            - /Users/$USER
     - stage: deploy
       name: "Reports and deployment"
       if: repo = env(OFFICIAL_REPO_SLUG) AND type != pull_request
