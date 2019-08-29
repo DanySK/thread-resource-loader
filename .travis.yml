@@ -29,7 +29,7 @@ env:
     - GRAVIS="https://raw.githubusercontent.com/DanySK/Gravis-CI/master/"
     - PUBLISH="false"
     - OFFICIAL_REPO_SLUG="DanySK/Thread-Inheritable-Resource-Loader-for-Java"
-    - NO_WIN_DEFENDER_TRICK=`curl "${GRAVIS}.disable-windows-defender.sh" --output .no-defender.sh && source .no-defender.sh`
+    - NO_WIN_DEFENDER=`curl "${GRAVIS}.disable-windows-defender.sh" --output .no-defender.sh && source .no-defender.sh`
   matrix:
     - *reference_jdk
 matrix:
@@ -72,9 +72,6 @@ workspaces:
   use:
     - reference-build
 before_install:
-  - if [ "$TRAVIS_OS_NAME" == "windows" ]; then powershell -ExecutionPolicy Bypass Get-MpPreference; fi
-  - curl "${GRAVIS}.disable-windows-defender.sh" --output .disable-windows-defender.sh
-  - source .disable-windows-defender.sh
   - curl "${GRAVIS}.install-jdk-travis.sh" --output .install-jdk-travis.sh
   - source .install-jdk-travis.sh
 script:
