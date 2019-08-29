@@ -72,7 +72,7 @@ workspaces:
   use:
     - reference-build
 before_install:
-  - powershell -ExecutionPolicy Bypass Get-MpPreference
+  - if [ "$TRAVIS_OS_NAME" == "windows" ]; then powershell -ExecutionPolicy Bypass Get-MpPreference; fi
   - curl "${GRAVIS}.disable-windows-defender.sh" --output .disable-windows-defender.sh
   - source .disable-windows-defender.sh
   - curl "${GRAVIS}.install-jdk-travis.sh" --output .install-jdk-travis.sh
