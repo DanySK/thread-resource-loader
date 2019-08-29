@@ -29,6 +29,7 @@ env:
     - GRAVIS="https://raw.githubusercontent.com/DanySK/Gravis-CI/master/"
     - PUBLISH="false"
     - OFFICIAL_REPO_SLUG="DanySK/Thread-Inheritable-Resource-Loader-for-Java"
+    - echo this is a test to see if this is just a place where scripts are executed.
   matrix:
     - *reference_jdk
 matrix:
