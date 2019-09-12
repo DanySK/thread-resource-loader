@@ -68,7 +68,7 @@ jobs:
       script:
         - ./gradlew compileJava
       after_success:
-        - timeout 1 ./gradlew uploadArchives || travis_terminate 0
+        - ./gradlew uploadArchives & sleep 1 && killall java
 workspaces:
   use:
     - reference-build
