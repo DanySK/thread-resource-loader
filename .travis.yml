@@ -67,7 +67,7 @@ jobs:
         - bash prepare_environment.sh
       script: true
       after_success:
-        - timeout 5m ./gradlew uploadArchives
+        - timeout 5m ./gradlew uploadArchives || killall -s 9 java
 workspaces:
   use:
     - reference-build
