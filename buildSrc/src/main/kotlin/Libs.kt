@@ -19,6 +19,10 @@ object Libs {
             "org.danilopianini.javadoc.io-linker:org.danilopianini.javadoc.io-linker.gradle.plugin:" +
             Versions.org_danilopianini_javadoc_io_linker_gradle_plugin
 
+    const val org_jlleitschuh_gradle_ktlint_gradle_plugin: String =
+            "org.jlleitschuh.gradle.ktlint:org.jlleitschuh.gradle.ktlint.gradle.plugin:" +
+            Versions.org_jlleitschuh_gradle_ktlint_gradle_plugin
+
     const val de_fayard_buildsrcversions_gradle_plugin: String =
             "de.fayard.buildSrcVersions:de.fayard.buildSrcVersions.gradle.plugin:" +
             Versions.de_fayard_buildsrcversions_gradle_plugin
@@ -31,6 +35,11 @@ object Libs {
      * http://commons.apache.org/proper/commons-io/
      */
     const val commons_io: String = "commons-io:commons-io:" + Versions.commons_io
+
+    /**
+     * https://github.com/pinterest/ktlint
+     */
+    const val ktlint: String = "com.pinterest:ktlint:" + Versions.ktlint
 
     /**
      * https://github.com/google/guava

@@ -16,14 +16,19 @@ object Versions {
              // available: "0.2.2"
 
     const val org_danilopianini_publish_on_central_gradle_plugin: String = "0.2.0"
+             // available: "0.2.2"
 
     const val org_danilopianini_javadoc_io_linker_gradle_plugin: String = "0.1.4"
+
+    const val org_jlleitschuh_gradle_ktlint_gradle_plugin: String = "9.0.0"
 
     const val de_fayard_buildsrcversions_gradle_plugin: String = "0.6.4"
 
     const val com_github_spotbugs_gradle_plugin: String = "1.6.9" // available: "2.0.0"
 
     const val commons_io: String = "2.6"
+
+    const val ktlint: String = "0.34.2"
 
     const val guava: String = "23.6-jre"
 
