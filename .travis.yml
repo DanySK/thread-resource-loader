@@ -68,7 +68,7 @@ jobs:
       script:
         - ./gradlew compileJava
       after_success:
-        - ./gradlew uploadArchives & sleep 7m && killall java
+        - ./gradlew publishAllPublicationsToMavenRepository
 workspaces:
   use:
     - reference-build
