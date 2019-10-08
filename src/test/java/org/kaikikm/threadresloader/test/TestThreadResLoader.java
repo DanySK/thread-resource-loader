@@ -96,7 +96,7 @@ public class TestThreadResLoader {
      * 
      */
     @Test
-    public void testClassLoading() throws InstantiationException, IllegalAccessException, ClassNotFoundException, NoSuchMethodException, SecurityException, IllegalArgumentException, InvocationTargetException, MalformedURLException {
+    public void testClassLoading() throws InstantiationException, IllegalAccessException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException, MalformedURLException {
         try {
             ResourceLoader.classForName("TestClass");
             fail();
@@ -118,7 +118,7 @@ public class TestThreadResLoader {
          * test new class
          */
         Class<?> c = ResourceLoader.classForName("org.kaikikm.dummy.TestClass2");
-        Object o =  c.newInstance();
+        Object o =  c.getDeclaredConstructor().newInstance();
         Method method = c.getDeclaredMethod("dummyMethod2");
         assertEquals(2, method.invoke(o));
         /*
@@ -126,7 +126,7 @@ public class TestThreadResLoader {
          */
         assertEquals(1, new TestClass().dummyMethod1());
         c = ResourceLoader.classForName("org.kaikikm.dummy.TestClass");
-        o = c.newInstance();
+        o = c.getDeclaredConstructor().newInstance();
         method = c.getDeclaredMethod("dummyMethod3");
         assertEquals(3, method.invoke(o));
     }

@@ -40,7 +40,7 @@ tasks.withType<SpotBugsTask> {
 		xml.setEnabled(false)
 		html.setEnabled(true)
 	}
-	ignoreFailures = false
+	ignoreFailures = true
 	effort = "max"
 	reportLevel = "low"
 	File("${project.rootProject.projectDir}/findbugsExcludes.xml")

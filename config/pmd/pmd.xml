@@ -92,12 +92,14 @@
     <rule ref="category/java/multithreading.xml">
         <exclude name="AvoidSynchronizedAtMethodLevel" />
         <exclude name="AvoidUsingVolatile" />
+		<exclude name="DoNotUseThreads" />
         <exclude name="UseConcurrentHashMap" />
     </rule>
     <rule ref="category/java/performance.xml">
         <exclude name="AvoidFileStream" />
         <exclude name="AvoidInstantiatingObjectsInLoops" />
         <exclude name="AvoidUsingShortType" />
+		<exclude name="OptimizableToArrayCall" />
         <exclude name="SimplifyStartsWith" />
         <exclude name="TooFewBranchesForASwitchStatement" />
     </rule>

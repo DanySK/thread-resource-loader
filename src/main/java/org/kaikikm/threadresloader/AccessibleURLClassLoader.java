@@ -24,6 +24,11 @@ class AccessibleURLClassLoader extends URLClassLoader {
     }
 
     @Override
+    public void addURL(final URL url) { // NOPMD
+        super.addURL(url);
+    }
+
+    @Override
     protected synchronized Class<?> loadClass(final String name, final boolean resolve)
             throws ClassNotFoundException {
         Class<?> c = findLoadedClass(name);
