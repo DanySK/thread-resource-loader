@@ -61,6 +61,12 @@ publishOnCentral {
 	scmConnection.set("git:git@github.com:DanySK/Thread-Inheritable-Resource-Loader-for-Java")
 }
 
+signing {
+	val signingKey: String? by project
+	val signingPassword: String? by project
+	useInMemoryPgpKeys(signingKey, signingPassword)
+}
+
 publishing {
 	publications {
 		withType<MavenPublication> {

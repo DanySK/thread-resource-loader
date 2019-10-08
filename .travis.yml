@@ -22,9 +22,6 @@ stages:
   - deploy
 env:
   global:
-    - secure: "bg/9mpgw7DOUUTCtaP2Q19mBZkBsgQj7Cg8bMzniFLFx+/zGtuUDvSL0gQjRdWqLOAJOvQF+wee2xqRmn85ErrLXCvBD7ubfnG4DUnWxlJ3odJQ9QwVa4ckefZQKMpixUA12CvCB+/vfThhSAXKxXuG1WX+Dbr7Zkx69fsBMgSwdDZcSM5MhI6JShCNDUnY3OzW3i66KCXzcQUTt1J+K527mLKQLdEP+Ld3JRCtHaMQvNwpSkuYAn4AQStxjtgktrLJ/d/z9rF1pYl95SmFWJHw9InHCIx8g8cK4DCOPiDF6XQrTIjoP7juLkWjSbc0vnrs0HCdOqOqiquOKWIya/WrYQ/HPqhW13PNXR6/65NWTdVeU9P2BXc9b/oDig4vIL5jqdJaXZc+UPRDUyH8rrsgg2oQ5P4d8zLEKugFNz6/4Fm7CLsoWGI+L+9ShqLSSSkpmqcObbv+wYMsDqppSvA1vz+ARogTtnaRCGaefgRCDTsbkqvCEYMyytMmjOEulpa1ucNCceYbj716+7BTGveYeZpnhllLifB2bS+s4roqmsleXcH/gIdPxrXFFQSgwlUXQjj35/sSIZagC/zAKtbyEddDCiOI7ecbxkxwv/Q3G5kcR0IhjXrOxskeC3AjYnRENOJ1oNUgyJ8K+NPG88WawoqhU2wujRkLOqZfTnxU="
-    - secure: "XjTzZbgEetsc5sz2J9KJ5oWTaCOdlSqAVVb2AAjUgQpY0U7KQaP3c07i2Dcy9/KrXS2VW46XzpbOo8vSnV7Dgrv+AKTWj+lj8MvAkGYJnDTrevB/FfIsXhZNyRQ5mKWkNYyDOLSgSCq8ILAXH7+91AOEaPSnH67BLtwleffykx+LtH2MNOWrSJLQfiReWwmMpy7CB8HSA6a27zOxzgMqNnRoVoOgAPDjnZtjz4s+gO8lJri+wkgM8n17/9cyWWuI6GsngOlOBq8/c0VH9FggOL4KpupssSLKadQA0+j2LZfuu9grB0d3g6HRfivd/NWia1yJ8mnPutINhHcZ4ng0xgaS/9sbLagKhmxYyKeO9ORve2ac4WyNmTU0kELX2CgD2zt5T10SmRG9W0ZYmb8TlgiN4ClT9d8JBJ1fC5sC8F2fgfBkI9NLkOwZaYkPwXG6HltcVI7NKkmVKSc1366uQm/BoOqlXIIKEKr7Tea85xOsB5uHX4lg0LP/goGVqexsJmsVm5p2SHnfQw4G5Dg+vt0FHKHbP7Vox2qE0ZU0Fs5AySJlFATU+rXxsILTFfASh9IxkZmVhnokGngcXhLAhQ7PaqdnUYFmYCoaNaTU32qQxUkr1zT7T4XREXR980J2ec0CdoREfak6sugmqRK6pa7jnPfuCkE3SbhHys+pswo="
-    - secure: "PqTMK2sYDrcWTOD4JWFBhJRc9p6PrWUqDNHC4Jzv1EMEU+7D+ZEjMk/f21RDtNw8zh3Kdoaab3aII4sAk82U7Wyayz7SpHMuPhUD3BSVRydFuQrheiHDh95AEHkZAMk03WF5b7D+ubavS/bW9uyoQtmYw2g5ZB8mh9Ulovo2T/GRjCbmidMnEjOmD8NDCQHZH5llv9LuOtG9CiN2dAmMkPjlhH9NPQaTI8E6uQf1oKMdyaH7ZkLHEew1+2bqvY6ql39OShCl86nAVSopCb7H3AKINUWH0ZgutXjpGnKGX7S3wX1VPBs44fCVHT5xwjWMjCRbv2sTesL+58GbpRYKVPArbhp/UR+F3h5KSrVisxP+TRj8jb6wDtkygVCuDo5ytkXOrrt6HMcI8xRe2PuM6GAKPnAJGwMgHDce94eJZ8YpCfWl4dxOKiuMJp7l7/IO5weBALqwj3MiyhBTJERdGhbXZVNtrHvLI/X05I9Hqm+RlfafkfBafbvsSsnP14qGATZ5nUf5IHAW2cuhZX21eKXzA85YErTBQDPZy5u3GkMcrmEJaP958EPcq2Eq7CffYI1MmdcTXcNdnU8HGOHZrMMrc+iH0hW8U4Y38FW2+x96oChzHvh2EVsvZZDPZCJV7M7woykuiZuXRI28rcrXMjKLbgzis/sVEaGN5kiHBDI="
     - TERM=dumb
     - GRAVIS="https://raw.githubusercontent.com/DanySK/Gravis-CI/master/"
     - PUBLISH="false"
@@ -43,6 +40,9 @@ jobs:
       os: *reference_os
       env:
         - *reference_jdk
+        - secure: "EvV1U9xlMFXTP3GSpbhtTXjHMOpO7ALw4Ayp6+VMuYPeW68gDeVoB8YR2D2B8w1tKQ+SReN1ocpGHupQE9WRA5DMadBhhxeN+uPPLX+85yeXxHhI5NpgYy1TdVpXonZeg79ignsp2pMDX3gSSl/ockpll9n+WUl3y9dTxCJ2ifQ1gcrnQxixea775DsjG0DZ5NhoEMQrFNqwIXmHzg8CbD35ZkY3KxiLeeou1AD4iGzkv5gTRWzJ5doEIGbDUaePQ7xi3BorztfcbQJAvfkU4jG9CE/QCvXchD9jbcqq4WxJTM470WJU5Ekw9tWoNoxk321aaAkfV8r/mzxrMCR1tpAehdYWMF+mx2GmnJ56v4V4AWRDa24Nz+W3I4+d1RbYOoFOH86W2/DI9350YnDmNJJRCbtMGFzkcEOzHSF13FEoDwgkh/B2PtmBcjBcpl6onNWDUD3trwVB9d6iR7CKGIzQPSUZqi4XvTBB4DN2oBXbhhWUhHBGNBLGoEW60HY45Cv9eQ4qxKht21L5FSjPSAIfbPXdrZX4qTyDPB01ApShByRSuFQG8cvdRphm7SXsM8IgDejd28phOU0sIb/Mrd0V0xC3TjnWu2gvOKwNEMogTjV/6fOVwwbBtohQjJ9HF3fdLtvzR2Vhda0fPCqEdqdN6Vd1oqAsN1ERMiN3A1w="
+        - secure: "coFngfc8MWVVbKGU+KtMcCKjQ8sN8eHzmXF3ZA5G2URO+HDA6udZbewqbfUnOBouiuZGJVxsCNI3rrE3hIy6/wc/UoqXRaXRexSZUyiL5vDihvz0unserdEPM6E2qkqq379q9t67qyiwoymIFyvV8SzWS6V7Sp2/wRAnfQiVbVEe4Yb2RDo4xjIBEFCh6UkgQvbBSe40bHrx925Esij/VSgcUb1S6+EOQb5y/GKaLHqzxG00p1XD+ITy4uL0h8vyWj2Xfpe6+r2jb9FP55OzP30HKty1YMSb2+prB+tf/9qL9HKLeJ3OkTZGDmBzf+Nug0zz/kNdWM+6hIzQBioFxynZXHrHf63s0QBTvEMb06dPqlt9uWYd08CGBgW2zTNNiq91zNGYXLWtNFjI4mHbfoL1bXE7exCTa57FYJBs3on+HuH4JLsQLLfBcrVjaG1AoEaSdP6e44ARG9HSlqadM6KTeENJip/x8hmIjd8O/SpFk1jJzEE9h7DCgKyaT9ziADpV1YaZvpQQUL1Qp2s/aWf1CLru0ZGIjhH+5vYYPuIYZTozbKPqR0V7oA+J2df55vPCPnTfG9/EGW/OZt949vFwIoTtKwWkqCBb0WGpCWeTmJfScZOLr/IucA+3PxA20Uhn4/xuZzu1yKDF11jRt6iy/wUSj+Y1FwseENk9dOs="
+        - secure: "ITIbLrxkfMG6u9cO7UqPTExTvKIkHFSbz6YCbzpi5t4eddVRP0Z3ughJpYRGWauSUBFoIDZT0Qka8r2+I6K4z+cmuypNihyPKV5R8aXUpSOrhDVOrtUBJxrL1lhkP6ahni21EhPt8tTH/DIcBMgM8NFIH6JdShTdXrKLSZPhH5+dgMdD3xwKdn25wk1q9XcWhM5nSaNmu8QL77vgFyCWOLevUXB4/5Jm5BElg7Wl8epxrkp0qOY8j+Vxd0ysQTnBJ6Il3rAyN+D/2VtYJPetNEfgyq7vyvElBXmrqE5wC+9oMmg2SUlUAgRxCUPRUA2cwRk1dKn5BHg61P/5LuPu0nb4ZIaYE1FXddKcNXQKEVjZdPHAmLkq3BTMqA5RCtCCQydTNUgMB4fLGGXQ/39QpFHC6F1ae5cpT/rG2cVJaqqnlRScTKqiEYtijgWm988w9d5LJBzySPwzLDtPUrW1gqjCJHYXIDdoUKjBB1yX6PdgZvZ3BsR5QohvdlL3DTs16QBCj8ufomApKYde2H6mbNoiNdgN4DNHI7Nsn+PGu9kmPu6b9+L3p5wYQ/EOz7+t82urflQrZRO6h92zTf52k/RzDnGFIFHvU8Hs47XnhsAex6JSmjuufOr2RAvb64NEKTYo5h236WG4awRok1ErqM1euDIa5g1hZGSnGVoppXQ="
       script:
         - ./gradlew 
         # Workspace preparation
@@ -63,8 +63,9 @@ jobs:
         - PUBLISH="true"
         - *reference_jdk
       install:
-        - openssl aes-256-cbc -K $encrypted_c97e58f83f35_key -iv $encrypted_c97e58f83f35_iv -in prepare_environment.sh.enc -out prepare_environment.sh -d
-        - bash prepare_environment.sh
+        - openssl aes-256-cbc -K $encrypted_c97e58f83f35_key -iv $encrypted_c97e58f83f35_iv -in secrets.asc.enc -out secrets.asc -d
+        - export ORG_GRADLE_PROJECT_signingKey=$(cat secrets.asc)
+        - rm secrets.asc
       script:
         - ./gradlew compileJava
       after_success:
