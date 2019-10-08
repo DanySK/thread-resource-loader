@@ -31,6 +31,7 @@
 		<exclude name="AvoidPrefixingMethodParameters" />
 		<exclude name="AvoidUsingNativeCode" />
 		<exclude name="CallSuperInConstructor" />
+		<exclude name="CommentDefaultAccessModifier" />
 		<exclude name="ConfusingTernary" />
 		<exclude name="EmptyMethodInAbstractClassShouldBeAbstract" />
 		<exclude name="LongVariable" />
