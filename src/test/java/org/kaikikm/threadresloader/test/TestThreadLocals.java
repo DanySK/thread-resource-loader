@@ -37,10 +37,10 @@ public class TestThreadLocals {
         arr.add(0, val.get());
         assertEquals(Integer.valueOf(0), arr.get(0));
         final CountDownLatch cl = new CountDownLatch(2);
-        new TestThread(1, cl, arr, ()->null) {
+        new TestThread(1, cl, arr, () -> null) {
             @Override
             public void operation() {
-                new TestThread(2, cl, arr, ()->val.get()) {
+                new TestThread(2, cl, arr, () -> val.get()) {
                     @Override
                     public void operation() {
                     }
@@ -60,10 +60,10 @@ public class TestThreadLocals {
         final ArrayList<Integer> arr = new ArrayList<>(10);
         arr.add(0, null);
         final CountDownLatch cl = new CountDownLatch(2);
-        new TestThread(1, cl, arr, ()->val.get()) {
+        new TestThread(1, cl, arr, () -> val.get()) {
             @Override
             public void operation() {
-                new TestThread(2, cl, arr, ()->val.get()) {
+                new TestThread(2, cl, arr, () -> val.get()) {
                     @Override
                     public void operation() {
                     }
