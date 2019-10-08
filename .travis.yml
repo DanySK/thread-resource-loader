@@ -44,17 +44,7 @@ jobs:
         - secure: "coFngfc8MWVVbKGU+KtMcCKjQ8sN8eHzmXF3ZA5G2URO+HDA6udZbewqbfUnOBouiuZGJVxsCNI3rrE3hIy6/wc/UoqXRaXRexSZUyiL5vDihvz0unserdEPM6E2qkqq379q9t67qyiwoymIFyvV8SzWS6V7Sp2/wRAnfQiVbVEe4Yb2RDo4xjIBEFCh6UkgQvbBSe40bHrx925Esij/VSgcUb1S6+EOQb5y/GKaLHqzxG00p1XD+ITy4uL0h8vyWj2Xfpe6+r2jb9FP55OzP30HKty1YMSb2+prB+tf/9qL9HKLeJ3OkTZGDmBzf+Nug0zz/kNdWM+6hIzQBioFxynZXHrHf63s0QBTvEMb06dPqlt9uWYd08CGBgW2zTNNiq91zNGYXLWtNFjI4mHbfoL1bXE7exCTa57FYJBs3on+HuH4JLsQLLfBcrVjaG1AoEaSdP6e44ARG9HSlqadM6KTeENJip/x8hmIjd8O/SpFk1jJzEE9h7DCgKyaT9ziADpV1YaZvpQQUL1Qp2s/aWf1CLru0ZGIjhH+5vYYPuIYZTozbKPqR0V7oA+J2df55vPCPnTfG9/EGW/OZt949vFwIoTtKwWkqCBb0WGpCWeTmJfScZOLr/IucA+3PxA20Uhn4/xuZzu1yKDF11jRt6iy/wUSj+Y1FwseENk9dOs="
         - secure: "ITIbLrxkfMG6u9cO7UqPTExTvKIkHFSbz6YCbzpi5t4eddVRP0Z3ughJpYRGWauSUBFoIDZT0Qka8r2+I6K4z+cmuypNihyPKV5R8aXUpSOrhDVOrtUBJxrL1lhkP6ahni21EhPt8tTH/DIcBMgM8NFIH6JdShTdXrKLSZPhH5+dgMdD3xwKdn25wk1q9XcWhM5nSaNmu8QL77vgFyCWOLevUXB4/5Jm5BElg7Wl8epxrkp0qOY8j+Vxd0ysQTnBJ6Il3rAyN+D/2VtYJPetNEfgyq7vyvElBXmrqE5wC+9oMmg2SUlUAgRxCUPRUA2cwRk1dKn5BHg61P/5LuPu0nb4ZIaYE1FXddKcNXQKEVjZdPHAmLkq3BTMqA5RCtCCQydTNUgMB4fLGGXQ/39QpFHC6F1ae5cpT/rG2cVJaqqnlRScTKqiEYtijgWm988w9d5LJBzySPwzLDtPUrW1gqjCJHYXIDdoUKjBB1yX6PdgZvZ3BsR5QohvdlL3DTs16QBCj8ufomApKYde2H6mbNoiNdgN4DNHI7Nsn+PGu9kmPu6b9+L3p5wYQ/EOz7+t82urflQrZRO6h92zTf52k/RzDnGFIFHvU8Hs47XnhsAex6JSmjuufOr2RAvb64NEKTYo5h236WG4awRok1ErqM1euDIa5g1hZGSnGVoppXQ="
       script:
-        - ./gradlew 
-        # Workspace preparation
-        - curl "${GRAVIS}.prepare-multiplatform-workspace.sh" --output .prepare-multiplatform-workspace.sh
-        - bash .prepare-multiplatform-workspace.sh
-      workspaces:
-        create:
-          name: reference-build
-          paths:
-            - $TRAVIS_BUILD_DIR
-            - /c/Users/$USER/build/$TRAVIS_REPO_SLUG
-            - /Users/$USER/build/$TRAVIS_REPO_SLUG
+        - ./gradlew check
     - stage: deploy
       name: "Reports and deployment"
       if: repo = env(OFFICIAL_REPO_SLUG) AND type != pull_request
@@ -70,9 +60,6 @@ jobs:
         - ./gradlew compileJava
       after_success:
         - ./gradlew publishAllPublicationsToMavenRepository
-workspaces:
-  use:
-    - reference-build
 before_install:
   - curl "${GRAVIS}.install-jdk-travis.sh" --output .install-jdk-travis.sh
   - source .install-jdk-travis.sh
