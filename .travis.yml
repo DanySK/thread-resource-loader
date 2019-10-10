@@ -64,7 +64,7 @@ jobs:
       script:
         - ./gradlew sign -x test
       after_success:
-        - ./gradlew publishAllPublicationsToMavenRepository
+        - travis_wait 40 ./gradlew publishAllPublicationsToMavenRepository
 before_install:
   - curl "${GRAVIS}.install-jdk-travis.sh" --output .install-jdk-travis.sh
   - source .install-jdk-travis.sh
