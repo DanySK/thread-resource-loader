@@ -1,4 +1,4 @@
-import com.github.spotbugs.SpotBugsTask
+import com.github.spotbugs.snom.SpotBugsTask
 
 plugins {
     `java-library`
@@ -9,12 +9,11 @@ plugins {
     pmd
     checkstyle
     jacoco
-    id("com.github.spotbugs") version Versions.com_github_spotbugs_gradle_plugin
-    id("de.fayard.buildSrcVersions") version Versions.de_fayard_buildsrcversions_gradle_plugin
-    id("org.danilopianini.git-sensitive-semantic-versioning") version Versions.org_danilopianini_git_sensitive_semantic_versioning_gradle_plugin
-    id("org.danilopianini.javadoc.io-linker") version Versions.org_danilopianini_javadoc_io_linker_gradle_plugin
-    id("org.danilopianini.publish-on-central") version Versions.org_danilopianini_publish_on_central_gradle_plugin
-    id("org.jlleitschuh.gradle.ktlint") version Versions.org_jlleitschuh_gradle_ktlint_gradle_plugin
+    id("com.github.spotbugs")
+    id("org.danilopianini.git-sensitive-semantic-versioning")
+    id("org.danilopianini.javadoc.io-linker")
+    id("org.danilopianini.publish-on-central")
+    id("org.jlleitschuh.gradle.ktlint")
 }
 
 gitSemVer {
@@ -26,9 +25,9 @@ repositories {
 }
 
 dependencies {
-    testImplementation(Libs.commons_io)
-    testImplementation(Libs.guava)
-    testImplementation(Libs.junit)
+    testImplementation("commons-io:commons-io:_")
+    testImplementation("com.google.guava:guava:_")
+    testImplementation("junit:junit:_")
 }
 
 java {
@@ -36,17 +35,23 @@ java {
     targetCompatibility = JavaVersion.VERSION_1_8
 }
 
+spotbugs {
+    ignoreFailures.set(true)
+    setEffort("max")
+    setReportLevel("low")
+    showProgress.set(true)
+    val excludeFile = File("${project.rootProject.projectDir}/config/spotbugs/excludes.xml")
+    if (excludeFile.exists()) {
+        excludeFilter.set(excludeFile)
+    }
+}
+
 tasks.withType<SpotBugsTask> {
     reports {
-        xml.setEnabled(false)
-        html.setEnabled(true)
+        create("html") {
+            enabled = true
+        }
     }
-    ignoreFailures = true
-    effort = "max"
-    reportLevel = "low"
-    File("${project.rootProject.projectDir}/findbugsExcludes.xml")
-        .takeIf { it.exists() }
-        ?.also { excludeFilterConfig = project.resources.text.fromFile(it) }
 }
 
 pmd {
