@@ -73,12 +73,6 @@ before_install:
   - source $GRAVIS/install-jdk
 script:
   - ./gradlew test
-before_cache:
-  - $GRAVIS/clean-gradle-cache
-cache:
-  directories:
-    - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
 
 notifications:
   email:
