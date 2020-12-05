@@ -61,10 +61,10 @@ pmd {
 
 group = "org.danilopianini"
 publishOnCentral {
-    projectDescription.set(extra["projectDescription"].toString())
-    projectUrl.set("https://travis-ci.org/DanySK/Thread-Inheritable-Resource-Loader-for-Java")
-    projectLongName.set("Thread Inheritable Resource Loader for Java")
-    scmConnection.set("git:git@github.com:DanySK/Thread-Inheritable-Resource-Loader-for-Java")
+    projectDescription = extra["projectDescription"].toString()
+    projectUrl = "https://travis-ci.org/DanySK/Thread-Inheritable-Resource-Loader-for-Java"
+    projectLongName = "Thread Inheritable Resource Loader for Java"
+    scmConnection = "git:git@github.com:DanySK/Thread-Inheritable-Resource-Loader-for-Java"
 }
 
 if (System.getenv("CI") == true.toString()) {
