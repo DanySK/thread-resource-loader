@@ -12,13 +12,12 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Files;
 
 import org.apache.commons.io.FileUtils;
 import org.junit.Test;
 import org.kaikikm.dummy.TestClass;
 import org.kaikikm.threadresloader.ResourceLoader;
-
-import com.google.common.io.Files;
 
 /**
  * 
@@ -38,28 +37,25 @@ public class TestThreadResLoader {
 
     /**
      * 
-     * @throws IOException 
      */
     @Test
     public void testCustomClasspathResourceLoading() throws IOException {
-        final File dir = Files.createTempDir();
+        final File dir = Files.createTempDirectory("test-thread-inheritable-resource-loader").toFile();
         final File testFile = new File(dir.getAbsolutePath() + File.separator + CREATED_FILE);
         assertTrue(testFile.createNewFile());
-        ResourceLoader.setURLs(new URL[]{dir.toURI().toURL()});
+        ResourceLoader.setURLs(dir.toURI().toURL());
         assertNotNull(ResourceLoader.getResource("test_add.txt"));
         FileUtils.deleteDirectory(dir);
     }
 
     /**
      * 
-     * @throws IOException 
-     * @throws InterruptedException 
      */
     @Test
     public void testParentThreadClasspathResourceLoading() throws IOException, InterruptedException {
-        final File dir = Files.createTempDir();
+        final File dir = Files.createTempDirectory("test-thread-inheritable-resource-loader").toFile();
         assertTrue(new File(dir.getAbsolutePath() + File.separator + CREATED_FILE).createNewFile());
-        ResourceLoader.setURLs(new URL[]{dir.toURI().toURL()});
+        ResourceLoader.setURLs(dir.toURI().toURL());
         assertNotNull(ResourceLoader.getResource("test_add.txt"));
         TestThread t = new TestThread() {
             @Override
@@ -85,15 +81,7 @@ public class TestThreadResLoader {
     }
 
     /**
-     * @throws IllegalAccessException 
-     * @throws InstantiationException 
-     * @throws ClassNotFoundException 
-     * @throws SecurityException 
-     * @throws NoSuchMethodException 
-     * @throws InvocationTargetException 
-     * @throws IllegalArgumentException 
-     * @throws MalformedURLException 
-     * 
+     *
      */
     @Test
     public void testClassLoading() throws InstantiationException, IllegalAccessException, ClassNotFoundException, NoSuchMethodException, InvocationTargetException, MalformedURLException {
